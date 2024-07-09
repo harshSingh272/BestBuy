@@ -1,4 +1,5 @@
 import { getProductById } from '@/lib/actions'
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
 type Props = {
@@ -10,7 +11,19 @@ const ProductDetails = async ({ params: { id } }: Props) => {
 
   if(!product) redirect('/')
   return (
-    <div>{ product.title }</div>
+    <div className='product-container'>
+      <div className='flex gap-28 xl:flex-row flex-col'>
+        <div className='product-image'>
+          <Image 
+            src={product.image}
+            alt={product.title}
+            width={500}
+            height={400}
+            className='mx-auto'
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
